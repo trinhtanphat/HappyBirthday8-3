@@ -124,9 +124,10 @@ var timeout = null;
 var interval = 10000;
 
 $(document).ready(function() {
+	// window.location.href="indexx.html" // note cmt
 	var currentDate = new Date();
 	// var futureDate  = new Date(currentDate.getFullYear() + 1, 0, 1);
-	var futureDate = new Date("Mar 8, 2023 00:00:00")
+	var futureDate = new Date("Mar 8, 2024 0:00:00")
 	var diff = futureDate.getTime() / 1000 - currentDate.getTime() / 1000;
 
 	clock = $clock.FlipClock(diff, {
@@ -135,13 +136,15 @@ $(document).ready(function() {
 		callbacks: {
 			interval: function() {
 				var time = this.factory.getTime().time;
-				if(time <= 10 && time > 0) {
+				if(time <= 60 && time > 0) {
 					pulse();
 				}
-				else if(time <= 0) {
+				else if(time == 0) {
 					celebrate();
 					pulse();
 					window.location.href="indexx.html"
+					// if (time < 20)
+						// window.location.href="indexx.html"
 				}
 			}
 		}
